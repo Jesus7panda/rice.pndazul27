@@ -1,0 +1,46 @@
+(defpoll time :interval "1s" "date '+%H:%M:%S'")
+(defpoll date :interval "1h" "date '+%A, %d %B'")
+(defpoll mpris_title :interval "1s" "playerctl metadata title || echo 'No Media'")
+(defpoll mpris_artist :interval "1s" "playerctl metadata artist || echo '...'")
+
+;; WIDGET DERECHO: SYSTEM HUD
+(defwidget sys_hud []
+  (box :orientation "v" :space-evenly false :class "hud-box"
+    (label :text time :class "hud-clock")
+    (label :text date :class "hud-date")
+    (box :orientation "v" :class "hud-metrics"
+      (label :text "CPU: ${round(EWW_CPU.avg, 0)}%")
+      (scale :value {EWW_CPU.avg} :max 100 :active false)
+      (label :text "RAM: ${round(EWW_RAM.used_mem_perc, 0)}%")
+      (scale :value {EWW_RAM.used_mem_perc} :max 100 :active false)
+    )
+  )
+)
+
+;; WIDGET IZQUIERDO: MEDIA PLAYER (UNIVERSAL)
+(defwidget media_player []
+  (box :orientation "v" :space-evenly false :class "media-box"
+    (label :text "󰎆 AUDIO INTERCEPT" :class "media-header")
+    (label :text mpris_title :limit-width 20 :class "media-title")
+    (label :text mpris_artist :limit-width 20 :class "media-artist")
+    (box :orientation "h" :space-evenly true
+      (button :onclick "playerctl previous" "⏮")
+      (button :onclick "playerctl play-pause" "⏯")
+      (button :onclick "playerctl next" "⏭")
+    )
+  )
+)
+
+(defwindow hud
+  :monitor 0
+  :geometry (geometry :x "-20px" :y "50px" :width "300px" :anchor "top right")
+  :stacking "bg"
+  :windowtype "desktop"
+  (sys_hud))
+
+(defwindow media
+  :monitor 0
+  :geometry (geometry :x "20px" :y "50px" :width "300px" :anchor "top left")
+  :stacking "bg"
+  :windowtype "desktop"
+  (media_player))
