@@ -1,0 +1,53 @@
+configuration {
+    modi: "drun,run";
+    show-icons: true;
+    font: "JetBrains Mono 12";
+    display-drun: "/> EXECUTE_";
+}
+
+@theme "/dev/null"
+
+* {
+    bg: rgba(0, 28, 72, 0.85); /* #001C48 base */
+    fg: #ffffff;
+    accent: #ff3333;
+    border-color: #ffffff;
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    width: 35%;
+    background-color: @bg;
+    border: 2px;
+    border-color: @accent;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+inputbar {
+    children: [prompt, entry];
+    background-color: rgba(255, 51, 51, 0.2);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+entry {
+    placeholder: "Search system directives...";
+    padding: 0 0 0 10px;
+}
+
+listview {
+    lines: 7;
+    margin: 20px 0 0 0;
+}
+
+element {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+element selected {
+    background-color: @accent;
+    text-color: @bg;
+}
