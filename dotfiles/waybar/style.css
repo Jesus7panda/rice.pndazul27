@@ -1,0 +1,33 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "FiraCode Nerd Font", "JetBrains Mono";
+    font-size: 13px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background-color: rgba(0, 28, 72, 0.7); /* Azul Profundo #001C48 con transparencia */
+    color: #ffffff;
+    border-bottom: 1px solid #ff3333; /* Acento rojo */
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: #a0b0c0;
+}
+
+#workspaces button.active {
+    color: #ff3333;
+    border-bottom: 2px solid #ffffff;
+}
+
+#clock, #network, #pulseaudio, #bluetooth, #custom-weather_sf, #custom-weather_valpo, #tray {
+    padding: 0 10px;
+    margin: 0 2px;
+    border-radius: 5px;
+}
+
+#custom-weather_sf, #custom-weather_valpo {
+    color: #ffcccc;
+}
