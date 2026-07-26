@@ -1,0 +1,16 @@
+[general]
+framerate = 60
+bar_width = 3
+bar_spacing = 1
+
+[color]
+# Degradado Cyberpunk de Rojo a Blanco
+gradient = 1
+gradient_count = 3
+gradient_color_1 = '#ff3333'
+gradient_color_2 = '#ff8888'
+gradient_color_3 = '#ffffff'
+
+[smoothing]
+monstercat = 1
+waves = 0
